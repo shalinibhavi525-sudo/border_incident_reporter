@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Reporter - Border Incident Reporter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="reporter-container">
+        <header>
+            <a href="/" class="back-btn">← Back</a>
+            <h1>📱 Field Reporter</h1>
+        </header>
+
+        <div id="location-status" class="status-box">
+            <span id="location-icon">📍</span>
+            <span id="location-text">Click below to get your location</span>
+        </div>
+
+        <form id="incident-form" class="incident-form">
+            <!-- Location (hidden fields) -->
+            <input type="hidden" id="latitude" name="latitude" required>
+            <input type="hidden" id="longitude" name="longitude" required>
+            <input type="hidden" id="accuracy" name="accuracy">
+
+            <button type="button" id="get-location-btn" class="location-btn">
+                📍 Get My Location
+            </button>
+
+            <!-- Incident Type -->
+            <div class="form-group">
+                <label for="type">Incident Type *</label>
+                <select id="type" name="type" required>
+                    <option value="">Select type...</option>
+                    <option value="Suspicious Activity">Suspicious Activity</option>
+                    <option value="Border Breach">Border Breach</option>
+                    <option value="Unauthorized Entry">Unauthorized Entry</option>
+                    <option value="Equipment Issue">Equipment Issue</option>
+                    <option value="Medical Emergency">Medical Emergency</option>
+                    <option value="Weather Alert">Weather Alert</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <!-- Severity -->
+            <div class="form-group">
+                <label for="severity">Severity Level *</label>
+                <div class="severity-buttons">
+                    <button type="button" class="severity-btn" data-severity="Low">
+                        Low
+                    </button>
+                    <button type="button" class="severity-btn" data-severity="Medium">
+                        Medium
+                    </button>
+                    <button type="button" class="severity-btn" data-severity="High">
+                        High
+                    </button>
+                    <button type="button" class="severity-btn" data-severity="Critical">
+                        Critical
+                    </button>
+                </div>
+                <input type="hidden" id="severity" name="severity" required>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description">Description *</label>
+                <textarea id="description" name="description" rows="4" 
+                    placeholder="Describe the incident in detail..." required></textarea>
+                <small>Be specific: what, when, who, how many</small>
+            </div>
+
+            <!-- Photo Upload -->
+            <div class="form-group">
+                <label for="photo">Photo Evidence (Optional)</label>
+                <input type="file" id="photo" name="photo" accept="image/*" capture="camera">
+                <small>Max 5MB, JPG/PNG only</small>
+            </div>
+
+            <!-- Reporter Info (Optional) -->
+            <div class="form-group">
+                <label for="reporter_name">Your Name (Optional)</label>
+                <input type="text" id="reporter_name" name="reporter_name" 
+                    placeholder="e.g., Constable Kumar">
+            </div>
+
+            <div class="form-group">
+                <label for="reporter_unit">Unit (Optional)</label>
+                <input type="text" id="reporter_unit" name="reporter_unit" 
+                    placeholder="e.g., Alpha Company, Sector 3">
+            </div>
+
+            <div class="form-group">
+                <label for="reporter_contact">Contact (Optional)</label>
+                <input type="tel" id="reporter_contact" name="reporter_contact" 
+                    placeholder="e.g., 9876543210">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" id="submit-btn" class="submit-btn" disabled>
+                Submit Report
+            </button>
+        </form>
+
+        <div id="success-message" class="success-message hidden">
+            ✅ Report submitted successfully!<br>
+            <small>Incident ID: <span id="incident-id"></span></small>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/reporter.js') }}"></script>
+</body>
+</html>

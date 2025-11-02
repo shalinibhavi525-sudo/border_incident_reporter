@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border Incident Reporter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="landing-container">
+        <div class="hero">
+            <h1>🛡️ Border Incident Reporter</h1>
+            <p class="tagline">Real-time incident logging for border security operations</p>
+        </div>
+
+        <div class="options">
+            <a href="/reporter" class="option-card reporter-card">
+                <div class="icon">📱</div>
+                <h2>Field Reporter</h2>
+                <p>Report incidents from the field</p>
+                <span class="badge">For Personnel</span>
+            </a>
+
+            <a href="/dashboard" class="option-card dashboard-card">
+                <div class="icon">📊</div>
+                <h2>Command Dashboard</h2>
+                <p>View and manage all incidents</p>
+                <span class="badge">For Command Center</span>
+            </a>
+        </div>
+
+        <div class="info-section">
+            <h3>Features</h3>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">📍</span>
+                    <span>Auto GPS Location</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📸</span>
+                    <span>Photo Evidence</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <span>Quick Reporting</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🗺️</span>
+                    <span>Live Map View</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built for BSF Border Operations | Developed by Shambhavi Singh</p>
+        </footer>
+    </div>
+</body>
+</html>

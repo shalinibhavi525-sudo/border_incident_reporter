@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Dashboard - Border Incident Reporter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div>
+                <a href="/" class="back-btn">← Back</a>
+                <h1>📊 Command Dashboard</h1>
+            </div>
+            <div class="header-stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="total-count">0</div>
+                    <div class="stat-label">Total Incidents</div>
+                </div>
+                <div class="stat-box critical">
+                    <div class="stat-value" id="critical-count">0</div>
+                    <div class="stat-label">Critical</div>
+                </div>
+                <div class="stat-box open">
+                    <div class="stat-value" id="open-count">0</div>
+                    <div class="stat-label">Open</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <!-- Filters -->
+            <div class="filters">
+                <select id="filter-severity">
+                    <option value="">All Severities</option>
+                    <option value="Critical">Critical</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+
+                <select id="filter-type">
+                    <option value="">All Types</option>
+                    <option value="Suspicious Activity">Suspicious Activity</option>
+                    <option value="Border Breach">Border Breach</option>
+                    <option value="Unauthorized Entry">Unauthorized Entry</option>
+                    <option value="Equipment Issue">Equipment Issue</option>
+                    <option value="Medical Emergency">Medical Emergency</option>
+                    <option value="Weather Alert">Weather Alert</option>
+                </select>
+
+                <select id="filter-status">
+                    <option value="">All Status</option>
+                    <option value="Open">Open</option>
+                    <option value="Investigating">Investigating</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+
+                <button id="refresh-btn" class="refresh-btn">🔄 Refresh</button>
+            </div>
+
+            <!-- Map -->
+            <div id="map" class="dashboard-map"></div>
+
+            <!-- Incidents List -->
+            <div class="incidents-panel">
+                <h2>Recent Incidents</h2>
+                <div id="incidents-list" class="incidents-list">
+                    <p class="loading">Loading incidents...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for incident details -->
+    <div id="incident-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Incident Details</h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
